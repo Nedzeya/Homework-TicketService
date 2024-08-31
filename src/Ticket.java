@@ -13,14 +13,12 @@ public class Ticket {
     private double maxBackpackWeightInKg; // with prams precision
 
     //* ability to automatically detect and save creation time
-    private long creationTime = System.currentTimeMillis();
+    private static long creationTime = System.currentTimeMillis();
 
     //** ticket price
     BigDecimal price;
 
-
     public Ticket() {
-        setCreationTime(this.creationTime);
     }
 
     public Ticket(String id,
@@ -37,7 +35,6 @@ public class Ticket {
         this.isPromo = isPromo;
         setStadiumSector(stadiumSector);
         this.maxBackpackWeightInKg = maxBackpackWeightInKg;
-        setCreationTime(this.creationTime);
     }
 
     public Ticket(String concertHall,
@@ -46,7 +43,6 @@ public class Ticket {
         setConcertHall(concertHall);
         setEventCode(eventCode);
         this.time = time;
-        setCreationTime(this.creationTime);
     }
 
     public Ticket(String id) {
@@ -80,16 +76,11 @@ public class Ticket {
         this.eventCode = eventCode;
     }
 
-
     public void setStadiumSector(char sector) {
         if (sector < 'A' || sector > 'C') {
             throw new IllegalArgumentException("Stadium sector must be between 'A' and 'C'.");
         }
         this.stadiumSector = sector;
-    }
-
-    public void setCreationTime(long creationTime) {
-        this.creationTime = creationTime;
     }
 
     //**ability to save ticket price
