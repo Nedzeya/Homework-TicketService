@@ -9,14 +9,12 @@ public class Ticket {
     private String eventCode; // 3 digits
     private long time; // Unix timestamp in milliseconds, a specific event time
     private boolean isPromo;
-    private char stadiumSector; // from A to C
+    private Sector sector; // from A to C
     private double maxBackpackWeightInKg; // with prams precision
-    /**
-     * ability to automatically detect and save creation time
-     */
-    private static long creationTime = System.currentTimeMillis();
-    // ticket price
-    BigDecimal price;
+    //* ability to automatically detect and save creation time
+    private static long creationTime = System.currentTimeMillis()/1000; //Creation time in seconds
+    //** ticket price
+    private BigDecimal price;
 
     public Ticket() {
     }
@@ -26,14 +24,14 @@ public class Ticket {
                   String eventCode,
                   long time,
                   boolean isPromo,
-                  char stadiumSector,
+                  Sector sector,
                   double maxBackpackWeightInKg) {
         setId(id);
         setConcertHall(concertHall);
         setEventCode(eventCode);
         this.time = time;
         this.isPromo = isPromo;
-        setStadiumSector(stadiumSector);
+        this.sector = sector;
         this.maxBackpackWeightInKg = maxBackpackWeightInKg;
     }
 
@@ -76,27 +74,21 @@ public class Ticket {
         this.eventCode = eventCode;
     }
 
-    public void setStadiumSector(char sector) {
-        if (sector < 'A' || sector > 'C') {
-            throw new IllegalArgumentException("Stadium sector must be between 'A' and 'C'.");
-        }
-        this.stadiumSector = sector;
-    }
-
-    /**
-     * *ability to save ticket price
-     */
+    //**ability to save ticket price
     public void toSaveTicketPrice(double price) {
         BigDecimal ticketPrice = new BigDecimal(price);
         ticketPrice = ticketPrice.setScale(2, RoundingMode.HALF_UP);
         this.price = ticketPrice;
-        System.out.println("The ticket id: " + this.id + " price is: " + this.price);
+          }
+
+    public String toStringTicketPrice() {
+       return "The ticket id: " + this.id + " price is: " + this.price;
     }
 
     @Override
     public String toString() {
         Date time = new Date(this.time);
-        Date creationTime = new Date(Ticket.creationTime);
+        Date creationTime = new Date(Ticket.creationTime*1000);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String formattedDateTime = formatter.format(time);
         String formattedCreationTime = formatter.format(creationTime);
@@ -106,7 +98,7 @@ public class Ticket {
                 ", eventCode='" + eventCode + '\'' +
                 ", time=" + formattedDateTime +
                 ", isPromo=" + isPromo +
-                ", stadiumSector=" + stadiumSector +
+                ", stadiumSector=" + sector +
                 ", maxBackpackWeightInKg=" + maxBackpackWeightInKg +
                 ", creationTime=" + formattedCreationTime +
                 '}';
