@@ -15,7 +15,7 @@ public class TicketService {
                     "Concert",
                     "001", eventTime,
                     true,
-                    'A',
+                    Sector.A,
                     5.5);
             System.out.println(fullTicket);
 
@@ -29,6 +29,7 @@ public class TicketService {
 
             //saving ticket price
             emptyTicket.toSaveTicketPrice(49.99);
+            System.out.println(emptyTicket.toStringTicketPrice());
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
