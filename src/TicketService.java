@@ -44,7 +44,7 @@ public class TicketService {
      * Adds a ticket to the collection.
      * If the collection already contains 10 tickets, an  IllegalArgumentException is thrown.
      */
-    public void addTicket(Ticket ticket) {
+    private void addTicket(Ticket ticket) {
         if (tickets.size() >= 10) {
             throw new IllegalArgumentException("The Map can store only 10 tickets.");
         }
@@ -53,7 +53,7 @@ public class TicketService {
     /**
      * Return a ticket by ID
      */
-    public Ticket getTicketById(String id) {
+    private Ticket getTicketById(String id) {
         return tickets.get(id);
     }
 }
