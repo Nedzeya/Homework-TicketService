@@ -49,4 +49,10 @@ public class TicketService {
         }
         tickets.put(ticket.getId(), ticket);
     }
+    /**
+     * Return a ticket by ID
+     */
+    public Ticket getTicketById(String id) {
+        return tickets.get(id);
+    }
 }
