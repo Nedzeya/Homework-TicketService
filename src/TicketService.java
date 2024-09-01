@@ -3,10 +3,8 @@ import java.util.Calendar;
 public class TicketService {
     public static void main(String[] args) {
         try {
-
             Ticket emptyTicket = new Ticket();
             System.out.println(emptyTicket);
-
 
             Calendar calendar = Calendar.getInstance();
             calendar.set(2024, Calendar.AUGUST, 15, 12, 0, 0);
