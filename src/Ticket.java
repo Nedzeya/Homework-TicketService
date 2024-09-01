@@ -11,11 +11,11 @@ public class Ticket {
     private boolean isPromo;
     private char stadiumSector; // from A to C
     private double maxBackpackWeightInKg; // with prams precision
-
-    //* ability to automatically detect and save creation time
+    /**
+     * ability to automatically detect and save creation time
+     */
     private static long creationTime = System.currentTimeMillis();
-
-    //** ticket price
+    // ticket price
     BigDecimal price;
 
     public Ticket() {
@@ -45,10 +45,6 @@ public class Ticket {
         this.time = time;
     }
 
-    public Ticket(String id) {
-        setId(id);
-    }
-
     public void setId(String id) {
         if (id == null) {
             throw new IllegalArgumentException("Identifier cannot be null");
@@ -56,6 +52,10 @@ public class Ticket {
             throw new IllegalArgumentException("Identifier must not exceed 4 digits and/or characters.");
         }
         this.id = id;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public void setConcertHall(String concertHall) {
@@ -83,18 +83,20 @@ public class Ticket {
         this.stadiumSector = sector;
     }
 
-    //**ability to save ticket price
+    /**
+     * *ability to save ticket price
+     */
     public void toSaveTicketPrice(double price) {
         BigDecimal ticketPrice = new BigDecimal(price);
         ticketPrice = ticketPrice.setScale(2, RoundingMode.HALF_UP);
         this.price = ticketPrice;
-        System.out.println("The ticket id: "+ this.id+" price is: " + this.price);
+        System.out.println("The ticket id: " + this.id + " price is: " + this.price);
     }
 
     @Override
     public String toString() {
         Date time = new Date(this.time);
-        Date creationTime = new Date(this.creationTime);
+        Date creationTime = new Date(Ticket.creationTime);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String formattedDateTime = formatter.format(time);
         String formattedCreationTime = formatter.format(creationTime);

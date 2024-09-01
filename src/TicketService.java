@@ -1,6 +1,11 @@
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TicketService {
+    // Store Tickets, MAX 10 Tickets in void addTickets
+    private Map<String, Ticket> tickets = new HashMap<>();
+
     public static void main(String[] args) {
         try {
             Ticket emptyTicket = new Ticket();
@@ -26,12 +31,22 @@ public class TicketService {
                     "002",
                     eventTime1);
             System.out.println(limitedTicket);
-
-            //saving ticket price
+// Saving ticket price
             emptyTicket.toSaveTicketPrice(49.99);
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    /**
+     * Adds a ticket to the collection.
+     * If the collection already contains 10 tickets, an  IllegalArgumentException is thrown.
+     */
+    public void addTicket(Ticket ticket) {
+        if (tickets.size() >= 10) {
+            throw new IllegalArgumentException("The Map can store only 10 tickets.");
+        }
+        tickets.put(ticket.getId(), ticket);
     }
 }
