@@ -86,6 +86,10 @@ public class Ticket {
         this.stadiumSector = sector;
     }
 
+    public char getStadiumSector() {
+        return this.stadiumSector;
+    }
+
     //**ability to save ticket price
     public void toSaveTicketPrice(double price) {
         BigDecimal ticketPrice = new BigDecimal(price);
