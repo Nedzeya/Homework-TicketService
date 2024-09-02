@@ -11,6 +11,7 @@ public class Ticket {
     private boolean isPromo;
     private Sector sector; // from A to C
     private double maxBackpackWeightInKg; // with prams precision
+
     //* ability to automatically detect and save creation time
     private static long creationTime = System.currentTimeMillis()/1000; //Creation time in seconds
     //** ticket price
@@ -52,6 +53,10 @@ public class Ticket {
         this.id = id;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public void setConcertHall(String concertHall) {
         if (concertHall == null) {
             throw new IllegalArgumentException("Concert hall cannot be null");
@@ -84,7 +89,7 @@ public class Ticket {
     @Override
     public String toString() {
         Date time = new Date(this.time);
-        Date creationTime = new Date(Ticket.creationTime*1000);
+        Date creationTime = new Date(this.creationTime*1000);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String formattedDateTime = formatter.format(time);
         String formattedCreationTime = formatter.format(creationTime);
