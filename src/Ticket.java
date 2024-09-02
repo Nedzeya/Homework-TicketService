@@ -88,7 +88,7 @@ public class Ticket {
     @Override
     public String toString() {
         Date time = new Date(this.time);
-        Date creationTime = new Date(Ticket.creationTime*1000);
+        Date creationTime = new Date(this.creationTime*1000);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String formattedDateTime = formatter.format(time);
         String formattedCreationTime = formatter.format(creationTime);
