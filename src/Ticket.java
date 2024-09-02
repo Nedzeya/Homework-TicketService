@@ -44,6 +44,10 @@ public class Ticket {
         this.time = time;
     }
 
+    public Ticket(String id) {
+        setId(id);
+    }
+
     public void setId(String id) {
         if (id == null) {
             throw new IllegalArgumentException("Identifier cannot be null");
@@ -73,6 +77,13 @@ public class Ticket {
             throw new IllegalArgumentException("Event code must be exactly 3 digits.");
         }
         this.eventCode = eventCode;
+    }
+
+    public void setStadiumSector(char sector) {
+        if (sector < 'A' || sector > 'C') {
+            throw new IllegalArgumentException("Stadium sector must be between 'A' and 'C'.");
+        }
+        this.stadiumSector = sector;
     }
 
     //**ability to save ticket price
