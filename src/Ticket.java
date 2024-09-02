@@ -83,7 +83,6 @@ public class Ticket {
         this.stadiumSector = sector;
     }
 
-    // added by me
     public char getStadiumSector() {
         return this.stadiumSector;
     }
