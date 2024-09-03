@@ -79,15 +79,8 @@ public class Ticket {
         this.eventCode = eventCode;
     }
 
-    public void setStadiumSector(char sector) {
-        if (sector < 'A' || sector > 'C') {
-            throw new IllegalArgumentException("Stadium sector must be between 'A' and 'C'.");
-        }
-        this.stadiumSector = sector;
-    }
-
-    public char getStadiumSector() {
-        return this.stadiumSector;
+    public Sector getSector() {
+        return this.sector;
     }
 
     //**ability to save ticket price
