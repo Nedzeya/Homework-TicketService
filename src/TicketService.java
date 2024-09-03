@@ -39,7 +39,7 @@ public class TicketService {
 	}
 
 	// generate tickets
-	public static Ticket[] getTickets() {
+	private static Ticket[] getTickets() {
 		var stadiumSector = "ABC".toCharArray();
 		long eventTime;
 		Random random = new Random();
@@ -59,7 +59,7 @@ public class TicketService {
 	}
 
 	// returns tickets according to their stadiumSector
-	public static List<Ticket> getTicketByStadiumSector(char stadiumSector, Ticket[] initial) {
+	private static List<Ticket> getTicketByStadiumSector(char stadiumSector, Ticket[] initial) {
 		List<Ticket> tickets = new ArrayList<>();
 
 		for (var element : initial) {
