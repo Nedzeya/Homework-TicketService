@@ -1,6 +1,4 @@
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class TicketService {
     // Store Tickets, MAX 10 Tickets in void addTickets
@@ -59,7 +57,6 @@ public class TicketService {
 
 	// generate tickets
 	private static Ticket[] getTickets() {
-		var stadiumSector = "ABC".toCharArray();
 		long eventTime;
 		Random random = new Random();
 		boolean isPromo;
@@ -69,7 +66,7 @@ public class TicketService {
 
 			isPromo = random.nextBoolean();
 			eventTime = System.currentTimeMillis() / 1000;
-			char sector = stadiumSector[i % stadiumSector.length];
+			Sector sector = Sector.values()[i % Sector.values().length];
 			tickets[i] = new Ticket("ID" + (i + 1),
 					"Hall-" + (i + 1),
 					"00" + (i + 1), eventTime, isPromo, sector, 5.5);
@@ -78,11 +75,12 @@ public class TicketService {
 	}
 
 	// returns tickets according to their stadiumSector
-	private static List<Ticket> getTicketByStadiumSector(char stadiumSector, Ticket[] initial) {
+	private static List<Ticket> getTicketsByStadiumSector(char stadiumSector, Ticket[] initial) {
 		List<Ticket> tickets = new ArrayList<>();
-
+		char sectorToMatch;
 		for (var element : initial) {
-			if (element.getStadiumSector() == stadiumSector) {
+			sectorToMatch = element.getSector().name().charAt(0);
+			if (sectorToMatch == stadiumSector) {
 				tickets.add(element);
 			}
 		}
