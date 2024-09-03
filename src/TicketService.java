@@ -2,7 +2,7 @@ import java.util.*;
 
 public class TicketService {
     // Store Tickets, MAX 10 Tickets in void addTickets
-    private Map<String, Ticket> tickets = new HashMap<>();
+    private static Map<String, Ticket> tickets = new HashMap<>();
 
     public static void main(String[] args) {
         try {
@@ -32,7 +32,13 @@ public class TicketService {
 // Saving ticket price
             emptyTicket.toSaveTicketPrice(49.99);
             System.out.println(emptyTicket.toStringTicketPrice());
-
+//Generating tickets
+            generateTenTickets();
+            //testing getTicketById
+            System.out.println(getTicketById("ID1"));
+            //testing getTicketsByStadiumSector
+            List<Ticket> ticketsByStadiumSector = getTicketsByStadiumSector(Sector.A, tickets);
+            System.out.println(ticketsByStadiumSector.size());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -42,50 +48,54 @@ public class TicketService {
      * Adds a ticket to the collection.
      * If the collection already contains 10 tickets, an  IllegalArgumentException is thrown.
      */
-    private void addTicket(Ticket ticket) {
+    private static void addTicket(Ticket ticket) {
         if (tickets.size() >= 10) {
             throw new IllegalArgumentException("The Map can store only 10 tickets.");
         }
         tickets.put(ticket.getId(), ticket);
     }
+
     /**
      * Return a ticket by ID
      */
-    private Ticket getTicketById(String id) {
+    private static Ticket getTicketById(String id) {
         return tickets.get(id);
     }
 
-	// generate tickets
-	private static Ticket[] getTickets() {
-		long eventTime;
-		Random random = new Random();
-		boolean isPromo;
-		Ticket[] tickets = new Ticket[9];
+    /**
+     * Generate and add five tickets to the map tickets.
+     */
+    private static void generateTenTickets() {
+        long eventTime;
+        Random random = new Random();
+        boolean isPromo;
+        for (int i = 0; i < 10; i++) {
+            isPromo = random.nextBoolean();
+            eventTime = System.currentTimeMillis();
+            Sector sector = Sector.values()[i % Sector.values().length];
+            String eventCode = String.format("%03d", i + 1);
+            Ticket ticket = new Ticket("ID" + (i + 1),
+                    "Hall-" + (i + 1),
+                    eventCode,
+                    eventTime,
+                    isPromo,
+                    sector,
+                    5.5);
+            addTicket(ticket);
+        }
+    }
 
-		for (int i = 0; i < tickets.length; i++) {
-
-			isPromo = random.nextBoolean();
-			eventTime = System.currentTimeMillis() / 1000;
-			Sector sector = Sector.values()[i % Sector.values().length];
-			tickets[i] = new Ticket("ID" + (i + 1),
-					"Hall-" + (i + 1),
-					"00" + (i + 1), eventTime, isPromo, sector, 5.5);
-		}
-		return tickets;
-	}
-
-	// returns tickets according to their stadiumSector
-	private static List<Ticket> getTicketsByStadiumSector(char stadiumSector, Ticket[] initial) {
-		List<Ticket> tickets = new ArrayList<>();
-		char sectorToMatch;
-		for (var element : initial) {
-			sectorToMatch = element.getSector().name().charAt(0);
-			if (sectorToMatch == stadiumSector) {
-				tickets.add(element);
-			}
-		}
-		return tickets;
-	}
-
-
+    /**
+     * This method iterates through all tickets in the provided map
+     * and returns tickets according to their sector.
+     */
+    private static List<Ticket> getTicketsByStadiumSector(Sector sector, Map<String, Ticket> tickets) {
+        List<Ticket> resultTickets = new ArrayList<>();
+        for (Ticket ticket : tickets.values()) {
+            if (ticket.getSector() == sector) {
+                resultTickets.add(ticket);
+            }
+        }
+        return resultTickets;
+    }
 }

@@ -11,7 +11,6 @@ public class Ticket {
     private boolean isPromo;
     private Sector sector; // from A to C
     private double maxBackpackWeightInKg; // with prams precision
-
     //* ability to automatically detect and save creation time
     private static long creationTime = System.currentTimeMillis()/1000; //Creation time in seconds
     //** ticket price
@@ -42,10 +41,6 @@ public class Ticket {
         setConcertHall(concertHall);
         setEventCode(eventCode);
         this.time = time;
-    }
-
-    public Ticket(String id) {
-        setId(id);
     }
 
     public void setId(String id) {
