@@ -63,7 +63,7 @@ public class TicketService {
     }
 
     /**
-     * Generate and add five tickets to the map tickets.
+     * Generate and add ten tickets to the map tickets.
      */
     private static void generateTenTickets() {
         long eventTime;
