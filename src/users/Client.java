@@ -1,4 +1,7 @@
-public class Client extends User{
+package users;
+
+public class Client extends User {
+
     public Client(String name) {
         super(name);
     }
