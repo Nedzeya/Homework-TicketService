@@ -34,7 +34,7 @@ public class TicketService {
             System.out.println(limitedTicket);
 // Saving ticket price
             emptyTicket.toSaveTicketPrice(49.99);
-            System.out.println(emptyTicket.printTicketPrice());
+            emptyTicket.printTicketPrice();
 //Generating tickets
             generateTenTickets();
             //testing getTicketById
