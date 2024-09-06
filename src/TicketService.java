@@ -1,3 +1,6 @@
+import users.Admin;
+import users.Client;
+
 import java.util.*;
 
 public class TicketService {
@@ -42,6 +45,13 @@ public class TicketService {
             //testing shared() by phone and by phone and email
             emptyTicket.shared("123-456-789");
             fullTicket.shared("123-456-789","ticket@email.com");
+            //testing users polymorphism
+            Client client = new Client("Nice Client");
+            Admin admin = new Admin("Good Admin");
+            client.printRole();
+            client.getTicket();
+            admin.printRole();
+            admin.checkTicket();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
