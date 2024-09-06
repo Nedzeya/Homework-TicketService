@@ -43,7 +43,7 @@ public class Ticket {
         this.time = time;
     }
 
-    public void setId(String id) {
+    private void setId(String id) {
         if (id == null) {
             throw new IllegalArgumentException("Identifier cannot be null");
         } else if (id.length() > 4) {
@@ -56,7 +56,7 @@ public class Ticket {
         return id;
     }
 
-    public void setConcertHall(String concertHall) {
+    private void setConcertHall(String concertHall) {
         if (concertHall == null) {
             throw new IllegalArgumentException("Concert hall cannot be null");
         } else if (concertHall.length() > 10) {
@@ -65,13 +65,21 @@ public class Ticket {
         this.concertHall = concertHall;
     }
 
-    public void setEventCode(String eventCode) {
+    private void setEventCode(String eventCode) {
         if (eventCode == null) {
             throw new IllegalArgumentException("Event code cannot be null.");
         } else if (eventCode.length() != 3 || !eventCode.matches("\\d{3}")) {
             throw new IllegalArgumentException("Event code must be exactly 3 digits.");
         }
         this.eventCode = eventCode;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
+    }
+
+    public void setSector(Sector sector) {
+        this.sector = sector;
     }
 
     public Sector getSector() {
