@@ -1,8 +1,11 @@
+import lombok.Getter;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Getter
 public class Ticket {
     private String id; //max 4 digits and/or char
     private String concertHall; //max 10 chars
@@ -52,10 +55,6 @@ public class Ticket {
         this.id = id;
     }
 
-    public String getId() {
-        return id;
-    }
-
     private void setConcertHall(String concertHall) {
         if (concertHall == null) {
             throw new IllegalArgumentException("Concert hall cannot be null");
@@ -80,10 +79,6 @@ public class Ticket {
 
     public void setSector(Sector sector) {
         this.sector = sector;
-    }
-
-    public Sector getSector() {
-        return this.sector;
     }
 
     //**ability to save ticket price
