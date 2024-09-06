@@ -1,3 +1,5 @@
+import annotations.NullableWarning;
+import annotations.NullableWarningChecker;
 import lombok.Getter;
 
 import java.math.BigDecimal;
@@ -13,6 +15,7 @@ public class Ticket {
     private String eventCode; // 3 digits
     private long time; // Unix timestamp in milliseconds, a specific event time
     private boolean isPromo;
+    @NullableWarning
     private Sector sector; // from A to C
     private double maxBackpackWeightInKg; // with prams precision
     //* ability to automatically detect and save creation time
@@ -37,6 +40,7 @@ public class Ticket {
         this.isPromo = isPromo;
         this.sector = sector;
         this.maxBackpackWeightInKg = maxBackpackWeightInKg;
+        NullableWarningChecker.check(this);
     }
 
     public Ticket(String concertHall,
