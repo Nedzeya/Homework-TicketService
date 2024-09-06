@@ -88,7 +88,7 @@ public class Ticket {
         this.price = ticketPrice;
           }
 
-    public String toStringTicketPrice() {
+    public String printTicketPrice() {
        return "The ticket id: " + this.id + " price is: " + this.price;
     }
 
