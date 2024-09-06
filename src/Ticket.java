@@ -1,3 +1,5 @@
+
+
 import lombok.Getter;
 
 import java.math.BigDecimal;
@@ -114,5 +116,12 @@ public class Ticket {
     @Override
     public String toString() {
         return getAllTicketValues();
+    }
+
+    public void shared(String phoneNumber) {
+        System.out.println("Ticket was shared by phone to: " + phoneNumber);
+    }
+    public void shared(String phoneNumber, String email) {
+        System.out.println("Ticket was shared by phone to: " + phoneNumber + " and by email to: " + email);
     }
 }
