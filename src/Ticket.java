@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 @Getter
 public class Ticket {
@@ -15,7 +16,7 @@ public class Ticket {
     private Sector sector; // from A to C
     private double maxBackpackWeightInKg; // with prams precision
     //* ability to automatically detect and save creation time
-    private static long creationTime = System.currentTimeMillis()/1000; //Creation time in seconds
+    private static long creationTime = System.currentTimeMillis() / 1000; //Creation time in seconds
     //** ticket price
     private BigDecimal price;
 
@@ -66,7 +67,7 @@ public class Ticket {
 
     public String getAllTicketValues() {
         Date time = new Date(this.time);
-        Date creationTime = new Date(this.creationTime*1000);
+        Date creationTime = new Date(this.creationTime * 1000);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String formattedDateTime = formatter.format(time);
         String formattedCreationTime = formatter.format(creationTime);
@@ -96,6 +97,33 @@ public class Ticket {
         System.out.println("Ticket was shared by phone to: " + phoneNumber + " and by email to: " + email);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ticket ticket = (Ticket) o;
+        return time == ticket.time
+                && isPromo == ticket.isPromo
+                && Double.compare(ticket.maxBackpackWeightInKg, maxBackpackWeightInKg) == 0
+                && Objects.equals(id, ticket.id)
+                && Objects.equals(concertHall, ticket.concertHall)
+                && Objects.equals(eventCode, ticket.eventCode)
+                && sector == ticket.sector
+                && Objects.equals(price, ticket.price);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id,
+                concertHall,
+                eventCode,
+                time,
+                isPromo,
+                sector,
+                maxBackpackWeightInKg,
+                price);
+    }
+
     private void setId(String id) {
         if (id == null) {
             throw new IllegalArgumentException("Identifier cannot be null");
@@ -122,4 +150,5 @@ public class Ticket {
         }
         this.eventCode = eventCode;
     }
+
 }
