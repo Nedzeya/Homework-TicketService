@@ -9,7 +9,13 @@ public class Client extends User {
     public void printRole() {
         System.out.println("My role is CLIENT");
     }
+    @Override
     public void getTicket() {
         System.out.println("Client " + getName() + " is getting a ticket.");
+    }
+
+    @Override
+    public void checkTicket() {
+
     }
 }
