@@ -97,8 +97,7 @@ public class Ticket {
        return "The ticket id: " + this.id + " price is: " + this.price;
     }
 
-    @Override
-    public String toString() {
+      public String getAllTicketValues() {
         Date time = new Date(this.time);
         Date creationTime = new Date(this.creationTime*1000);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -113,6 +112,7 @@ public class Ticket {
                 ", stadiumSector=" + sector +
                 ", maxBackpackWeightInKg=" + maxBackpackWeightInKg +
                 ", creationTime=" + formattedCreationTime +
+                ", price=" + price +
                 '}';
     }
 }
