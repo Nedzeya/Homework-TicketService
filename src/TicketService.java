@@ -52,6 +52,15 @@ public class TicketService {
             client.getTicket();
             admin.printRole();
             admin.checkTicket();
+
+            //testing @NullableWarning
+            Ticket nullSectorFullTicket = new Ticket("ID02",
+                    "Concert",
+                    "001", eventTime,
+                    true,
+                    null,
+                    5.5);
+
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
