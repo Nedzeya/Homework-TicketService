@@ -110,4 +110,9 @@ public class Ticket {
                 ", price=" + price +
                 '}';
     }
+
+    @Override
+    public String toString() {
+        return getAllTicketValues();
+    }
 }
