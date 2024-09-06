@@ -33,6 +33,7 @@ public class Ticket {
                   boolean isPromo,
                   Sector sector,
                   double maxBackpackWeightInKg) {
+        NullableWarningChecker.check(this);
         setId(id);
         setConcertHall(concertHall);
         setEventCode(eventCode);
@@ -40,7 +41,6 @@ public class Ticket {
         this.isPromo = isPromo;
         this.sector = sector;
         this.maxBackpackWeightInKg = maxBackpackWeightInKg;
-        NullableWarningChecker.check(this);
     }
 
     public Ticket(String concertHall,
