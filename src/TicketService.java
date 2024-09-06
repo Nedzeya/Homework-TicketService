@@ -39,6 +39,9 @@ public class TicketService {
             //testing getTicketsByStadiumSector
             List<Ticket> ticketsByStadiumSector = getTicketsByStadiumSector(Sector.A, tickets);
             System.out.println(ticketsByStadiumSector.size());
+            //testing shared() by phone and by phone and email
+            emptyTicket.shared("123-456-789");
+            fullTicket.shared("123-456-789","ticket@email.com");
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
