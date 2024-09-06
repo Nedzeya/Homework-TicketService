@@ -1,6 +1,6 @@
 package users;
 
-public class Admin extends User {
+public class Admin extends AbstractUser {
     public Admin(String name) {
         super(name);
     }

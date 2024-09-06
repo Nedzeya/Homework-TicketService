@@ -1,6 +1,6 @@
 package users;
 
-public class Client extends User {
+public class Client extends AbstractUser {
 
     public Client(String name) {
         super(name);

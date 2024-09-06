@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public abstract class User {
+public abstract class AbstractUser {
 
     private String name;
 

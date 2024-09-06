@@ -1,6 +1,6 @@
 import users.Admin;
 import users.Client;
-import users.User;
+import users.AbstractUser;
 
 import java.util.*;
 
@@ -47,8 +47,8 @@ public class TicketService {
             emptyTicket.shared("123-456-789");
             fullTicket.shared("123-456-789","ticket@email.com");
             //testing users polymorphism
-            User client = new Client("Nice Client");
-            User admin = new Admin("Good Admin");
+            AbstractUser client = new Client("Nice Client");
+            AbstractUser admin = new Admin("Good Admin");
             client.printRole();
             client.getTicket();
             admin.printRole();
