@@ -48,13 +48,14 @@ public class TicketService {
             //testing shared() by phone and by phone and email
             emptyTicket.shared("123-456-789");
             fullTicket.shared("123-456-789","ticket@email.com");
-            //testing main.users polymorphism
+            //testing users polymorphism
             AbstractUser client = new Client("Nice Client");
             AbstractUser admin = new Admin("Good Admin");
             client.printRole();
             Ticket clientTicket = ((Client) client).getTicket();
             admin.printRole();
-            ((Admin) admin).checkTicket(clientTicket);
+            boolean checkingResult = ((Admin) admin).checkTicket(clientTicket);
+            System.out.println("Checking result is: " + checkingResult);
 
             //testing @NullableWarning
             Ticket nullSectorFullTicket = new Ticket("ID02",
