@@ -1,4 +1,4 @@
-package interfaces;
+package main.interfaces;
 
 public interface HasNumericId {
     void setNumericId(int id); // numeric ID

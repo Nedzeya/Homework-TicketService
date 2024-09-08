@@ -1,5 +1,7 @@
-import annotations.NullableWarning;
-import annotations.NullableWarningChecker;
+package main;
+
+import main.annotations.NullableWarning;
+import main.annotations.NullableWarningChecker;
 import lombok.Getter;
 
 
@@ -76,7 +78,7 @@ public class Ticket {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String formattedDateTime = formatter.format(time);
         String formattedCreationTime = formatter.format(creationTime);
-        return "Ticket{" +
+        return "main.Ticket{" +
                 "id='" + id + '\'' +
                 ", concertHall='" + concertHall + '\'' +
                 ", eventCode='" + eventCode + '\'' +
@@ -95,11 +97,11 @@ public class Ticket {
     }
 
     public void shared(String phoneNumber) {
-        System.out.println("Ticket was shared by phone to: " + phoneNumber);
+        System.out.println("main.Ticket was shared by phone to: " + phoneNumber);
     }
 
     public void shared(String phoneNumber, String email) {
-        System.out.println("Ticket was shared by phone to: " + phoneNumber + " and by email to: " + email);
+        System.out.println("main.Ticket was shared by phone to: " + phoneNumber + " and by email to: " + email);
     }
 
     @Override

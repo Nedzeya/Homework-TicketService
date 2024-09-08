@@ -1,4 +1,4 @@
-package annotations;
+package main.annotations;
 
 import java.lang.reflect.Field;
 
