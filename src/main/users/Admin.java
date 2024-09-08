@@ -11,11 +11,6 @@ public class Admin extends AbstractUser {
     }
 
     @Override
-    public void getTicket() {
-
-    }
-
-    @Override
     public void checkTicket() {
         System.out.println("Admin " + getName() + " is checking a ticket.");
     }

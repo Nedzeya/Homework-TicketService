@@ -1,6 +1,12 @@
 package main.users;
 
-public class Client extends AbstractUser {
+import lombok.Setter;
+import main.Ticket;
+import main.interfaces.HasTicket;
+
+@Setter
+public class Client extends AbstractUser implements HasTicket {
+    private Ticket ticket;
 
     public Client(String name) {
         super(name);
@@ -10,8 +16,9 @@ public class Client extends AbstractUser {
         System.out.println("My role is CLIENT");
     }
     @Override
-    public void getTicket() {
-        System.out.println("Client " + getName() + " is getting a ticket.");
+    public Ticket getTicket() {
+        System.out.println("Client " + getName() + " is getting a ticket "+ this.ticket);
+        return ticket;
     }
 
     @Override

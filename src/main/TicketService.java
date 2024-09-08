@@ -52,7 +52,7 @@ public class TicketService {
             AbstractUser client = new Client("Nice Client");
             AbstractUser admin = new Admin("Good Admin");
             client.printRole();
-            client.getTicket();
+            ((Client) client).getTicket();
             admin.printRole();
             admin.checkTicket();
 
