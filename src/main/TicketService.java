@@ -52,9 +52,9 @@ public class TicketService {
             AbstractUser client = new Client("Nice Client");
             AbstractUser admin = new Admin("Good Admin");
             client.printRole();
-            ((Client) client).getTicket();
+            Ticket clientTicket = ((Client) client).getTicket();
             admin.printRole();
-            admin.checkTicket();
+            ((Admin) admin).checkTicket(clientTicket);
 
             //testing @NullableWarning
             Ticket nullSectorFullTicket = new Ticket("ID02",

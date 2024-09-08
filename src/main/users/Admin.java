@@ -1,6 +1,9 @@
 package main.users;
 
-public class Admin extends AbstractUser {
+import main.Ticket;
+import main.interfaces.TicketChecker;
+
+public class Admin extends AbstractUser implements TicketChecker {
     public Admin(String name) {
         super(name);
     }
@@ -11,7 +14,8 @@ public class Admin extends AbstractUser {
     }
 
     @Override
-    public void checkTicket() {
-        System.out.println("Admin " + getName() + " is checking a ticket.");
+    public boolean checkTicket(Ticket ticket) {
+        System.out.println("Admin " + getName() + " is checking a ticket " + ticket);
+        return ticket != null;
     }
 }

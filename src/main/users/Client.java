@@ -20,9 +20,4 @@ public class Client extends AbstractUser implements HasTicket {
         System.out.println("Client " + getName() + " is getting a ticket "+ this.ticket);
         return ticket;
     }
-
-    @Override
-    public void checkTicket() {
-
-    }
 }
