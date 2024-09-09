@@ -72,7 +72,8 @@ public class Ticket {
         System.out.println("The ticket id: " + this.id + " price is: " + this.price);
     }
 
-    public String getAllTicketValues() {
+    @Override
+    public String toString() {
         Date time = new Date(this.time);
         Date creationTime = new Date(this.creationTime * 1000);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -89,11 +90,6 @@ public class Ticket {
                 ", creationTime=" + formattedCreationTime +
                 ", price=" + price +
                 '}';
-    }
-
-    @Override
-    public String toString() {
-        return getAllTicketValues();
     }
 
     public void shared(String phoneNumber) {
