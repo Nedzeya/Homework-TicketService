@@ -31,4 +31,13 @@ public class BusTicketValidator {
     private void addViolationToCounter (String violation) {
         violationsCounter.put(violation, violationsCounter.getOrDefault(violation, 0) + 1);
     }
+
+    private String getMostPopularViolation() {
+        return violationsCounter.entrySet()
+                .stream()
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .orElse("No violations");
+    }
+
 }
