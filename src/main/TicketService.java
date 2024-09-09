@@ -1,3 +1,9 @@
+package main;
+
+import main.users.Admin;
+import main.users.Client;
+import main.users.AbstractUser;
+
 import java.util.*;
 
 public class TicketService {
@@ -31,7 +37,7 @@ public class TicketService {
             System.out.println(limitedTicket);
 // Saving ticket price
             emptyTicket.toSaveTicketPrice(49.99);
-            System.out.println(emptyTicket.toStringTicketPrice());
+            emptyTicket.printTicketPrice();
 //Generating tickets
             generateTenTickets();
             //testing getTicketById
@@ -39,6 +45,26 @@ public class TicketService {
             //testing getTicketsByStadiumSector
             List<Ticket> ticketsByStadiumSector = getTicketsByStadiumSector(Sector.A, tickets);
             System.out.println(ticketsByStadiumSector.size());
+            //testing shared() by phone and by phone and email
+            emptyTicket.shared("123-456-789");
+            fullTicket.shared("123-456-789","ticket@email.com");
+            //testing users polymorphism
+            AbstractUser client = new Client("Nice Client");
+            AbstractUser admin = new Admin("Good Admin");
+            client.printRole();
+            Ticket clientTicket = ((Client) client).getTicket();
+            admin.printRole();
+            boolean checkingResult = ((Admin) admin).checkTicket(clientTicket);
+            System.out.println("Checking result is: " + checkingResult);
+
+            //testing @NullableWarning
+            Ticket nullSectorFullTicket = new Ticket("ID02",
+                    "Concert",
+                    "001", eventTime,
+                    true,
+                    null,
+                    5.5);
+
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
