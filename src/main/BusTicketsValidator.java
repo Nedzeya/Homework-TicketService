@@ -2,6 +2,7 @@ package main;
 
 import main.enums.TicketType;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,10 +35,11 @@ public class BusTicketsValidator {
      */
     private boolean validateHavingStartDate(BusTicket busTicket) {
         TicketType ticketType = busTicket.getTicketType();
+        LocalDate startDate = busTicket.getStartDate();
         if ((ticketType == TicketType.DAY ||
                 ticketType == TicketType.WEEK ||
                 ticketType == TicketType.YEAR) &&
-                busTicket.getStartDate() <= 0) {
+                startDate == null) {
             System.out.println("Error: Start date is required for ticket type " + ticketType);
             addViolationToCounter("start date");
             return false;
@@ -62,8 +64,9 @@ public class BusTicketsValidator {
      * start date cannot be in the future
      */
     private boolean validateStartDate(BusTicket busTicket) {
-        long currentTimestamp = System.currentTimeMillis() / 1000;
-        if (busTicket.getStartDate() > currentTimestamp) {
+        LocalDate currentDate = LocalDate.now();
+        LocalDate startDate = busTicket.getStartDate();
+        if (startDate!= null && startDate.isAfter(currentDate)) {
             System.out.println("Error: Start date cannot be in the future.");
             addViolationToCounter("start date");
             return false;

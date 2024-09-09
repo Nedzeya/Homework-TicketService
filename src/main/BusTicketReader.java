@@ -48,7 +48,7 @@ public class BusTicketReader {
 
         TicketClass ticketClass = parseTicketClass(ticketClassStr);
         TicketType ticketType = parseTicketType(ticketTypeStr);
-        long startDate = parseStartDate(startDateStr);
+        LocalDate startDate = parseStartDate(startDateStr);
         BigDecimal price = parsePrice(priceStr);
 
         return new BusTicket(ticketClass, ticketType, startDate, price);
@@ -63,12 +63,12 @@ public class BusTicketReader {
         }
     }
 
-    private static long parseStartDate(String startDateStr) {
+    private static LocalDate parseStartDate(String startDateStr) {
         try {
-            return startDateStr != null ? LocalDate.parse(startDateStr).toEpochDay() : -1;
+            return startDateStr != null ? LocalDate.parse(startDateStr) : null;
         } catch (DateTimeParseException e) {
             System.out.println("Invalid date format: " + e.getMessage());
-            return -1;
+            return null;
         }
     }
 

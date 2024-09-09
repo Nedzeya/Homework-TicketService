@@ -1,11 +1,11 @@
 package main;
 
 import lombok.*;
-import main.annotations.NullableWarning;
 import main.enums.TicketClass;
 import main.enums.TicketType;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,6 +16,6 @@ import java.math.BigDecimal;
 public class BusTicket {
     private TicketClass ticketClass;
     private TicketType ticketType;
-    private long startDate;
+    private LocalDate startDate;
     private BigDecimal price;
 }
