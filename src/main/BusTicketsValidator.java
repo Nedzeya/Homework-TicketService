@@ -27,7 +27,8 @@ public class BusTicketsValidator {
         return validateHavingStartDate(busTicket)
                 && validatePrice(busTicket)
                 && validateStartDate(busTicket)
-                && validateEvenPrice(busTicket);
+                && validateEvenPrice(busTicket)
+                && validateTicketType(busTicket);
     }
 
     /**
@@ -85,6 +86,18 @@ public class BusTicketsValidator {
         if (busTicketPrice.remainder(BigDecimal.valueOf(2)).compareTo(BigDecimal.ZERO) != 0) {
             System.out.println("Error: The price must be an even number.");
             return false;
+        }
+        return true;
+    }
+    /**
+     * valid values are DAY,WEEK,MONTH,YEAR
+     */
+    private boolean validateTicketType(BusTicket busTicket){
+        for (TicketType type : TicketType.values()) {
+            if (type != busTicket.getTicketType()) {
+                System.out.println("Error: Invalid ticket type.");
+                return false;
+            }
         }
         return true;
     }
