@@ -12,10 +12,9 @@ import java.math.BigDecimal;
 @Setter
 @Getter
 @EqualsAndHashCode
+@ToString
 public class BusTicket {
-    @NullableWarning
     private TicketClass ticketClass;
-    @NullableWarning
     private TicketType ticketType;
     private long startDate;
     private BigDecimal price;

@@ -7,6 +7,7 @@ import main.users.Admin;
 import main.users.Client;
 import main.users.AbstractUser;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -69,18 +70,14 @@ public class TicketService {
                     null,
                     5.5);
 
-            //BusTicketValidatorTesting
+            //BusTicketValidatorTesting and reading from file
+            System.out.println("Read and validate busTickets: ");
             BusTicketsValidator busTicketsValidator = new BusTicketsValidator();
-            List<BusTicket> busTickets = Arrays.asList(
-                    new BusTicket(TicketClass.STD, TicketType.DAY, 0L, BigDecimal.valueOf(10)),
-                    new BusTicket(TicketClass.STD, TicketType.WEEK, 0L, BigDecimal.valueOf(15)),
-                    new BusTicket(TicketClass.CLA, TicketType.YEAR, System.currentTimeMillis(), BigDecimal.ZERO),
-                    new BusTicket(TicketClass.STD, TicketType.MONTH, System.currentTimeMillis(), BigDecimal.valueOf(25)),
-                    new BusTicket(TicketClass.CLA, TicketType.DAY, 0L, BigDecimal.TEN)
-            );
+            String filePath = "src/main/files/busTickets.json";
+            List<BusTicket> busTickets = BusTicketReader.readTicketsFromFile(filePath);
             busTicketsValidator.validateTickets(busTickets);
 
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException | IOException e) {
             System.out.println(e.getMessage());
         }
     }

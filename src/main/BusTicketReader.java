@@ -30,9 +30,8 @@ public class BusTicketReader {
 
                 BusTicket busTicket = parseTicket(jsonObject);
 
-                if (busTicketsValidator.validateBusTicket(busTicket)) {
-                    busTickets.add(busTicket);
-                } else {
+                busTickets.add(busTicket);
+                if (!busTicketsValidator.validateBusTicket(busTicket)) {
                     System.out.println("Ticket failed validation: " + busTicket);
                 }
             }
