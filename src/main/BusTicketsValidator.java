@@ -67,6 +67,7 @@ public class BusTicketsValidator {
         long currentTimestamp = System.currentTimeMillis() / 1000;
         if (busTicket.getStartDate() > currentTimestamp) {
             System.out.println("Error: Start date cannot be in the future.");
+            addViolationToCounter("start date");
             return false;
         }
         return true;
@@ -80,11 +81,13 @@ public class BusTicketsValidator {
 
         if (busTicketPrice.stripTrailingZeros().scale() > 0) {
             System.out.println("Error: The price must be a whole number.");
+            addViolationToCounter("price");
             return false;
         }
 
         if (busTicketPrice.remainder(BigDecimal.valueOf(2)).compareTo(BigDecimal.ZERO) != 0) {
             System.out.println("Error: The price must be an even number.");
+            addViolationToCounter("price");
             return false;
         }
         return true;
@@ -96,6 +99,7 @@ public class BusTicketsValidator {
         for (TicketType type : TicketType.values()) {
             if (type != busTicket.getTicketType()) {
                 System.out.println("Error: Invalid ticket type.");
+                addViolationToCounter("type");
                 return false;
             }
         }
