@@ -78,7 +78,7 @@ public class Ticket {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String formattedDateTime = formatter.format(time);
         String formattedCreationTime = formatter.format(creationTime);
-        return "main.Ticket{" +
+        return "Ticket{" +
                 "id='" + id + '\'' +
                 ", concertHall='" + concertHall + '\'' +
                 ", eventCode='" + eventCode + '\'' +
