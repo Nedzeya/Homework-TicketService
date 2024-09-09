@@ -4,11 +4,25 @@ import main.enums.TicketType;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BusTicketValidator {
 
-    public boolean validateBusTicket(BusTicket busTicket) {
+    public void validateTickets(List<BusTicket> busTickets) {
+        int validTickets = 0;
+
+        for (BusTicket busTicket : busTickets) {
+            if (validateBusTicket(busTicket)) {
+                validTickets++;
+            }
+        }
+        System.out.println("Total = " + busTickets.size());
+        System.out.println("Valid = " + validTickets);
+        System.out.println("Most popular violation = " + getMostPopularViolation());
+    }
+
+    private boolean validateBusTicket(BusTicket busTicket) {
         TicketType ticketType = busTicket.getTicketType();
         if ((ticketType == TicketType.DAY ||
                 ticketType == TicketType.WEEK ||
@@ -26,9 +40,9 @@ public class BusTicketValidator {
         return true;
     }
 
-    private Map<String, Integer> violationsCounter = new HashMap<>();
+    private final Map<String, Integer> violationsCounter = new HashMap<>();
 
-    private void addViolationToCounter (String violation) {
+    private void addViolationToCounter(String violation) {
         violationsCounter.put(violation, violationsCounter.getOrDefault(violation, 0) + 1);
     }
 
@@ -39,5 +53,4 @@ public class BusTicketValidator {
                 .map(Map.Entry::getKey)
                 .orElse("No violations");
     }
-
 }
