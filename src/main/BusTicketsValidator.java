@@ -3,6 +3,7 @@ package main;
 import main.enums.TicketType;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,8 +26,10 @@ public class BusTicketsValidator {
     private boolean validateBusTicket(BusTicket busTicket) {
         return validateHavingStartDate(busTicket)
                 && validatePrice(busTicket)
-                && validateStartDate(busTicket);
-            }
+                && validateStartDate(busTicket)
+                && validateEvenPrice(busTicket);
+    }
+
     /**
      * only DAY,WEEK,YEAR types must have a startDate
      */
@@ -46,7 +49,7 @@ public class BusTicketsValidator {
     /**
      * price can't be zero
      */
-        private boolean validatePrice(BusTicket busTicket) {
+    private boolean validatePrice(BusTicket busTicket) {
         BigDecimal busTicketPrice = busTicket.getPrice();
         if (busTicketPrice == null || busTicketPrice.compareTo(BigDecimal.ZERO) == 0) {
             System.out.println("Error: Price can't be null or zero.");
@@ -63,6 +66,24 @@ public class BusTicketsValidator {
         long currentTimestamp = System.currentTimeMillis() / 1000;
         if (busTicket.getStartDate() > currentTimestamp) {
             System.out.println("Error: Start date cannot be in the future.");
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * price should always be even
+     */
+    private boolean validateEvenPrice(BusTicket busTicket) {
+        BigDecimal busTicketPrice = busTicket.getPrice();
+
+        if (busTicketPrice.stripTrailingZeros().scale() > 0) {
+            System.out.println("Error: The price must be a whole number.");
+            return false;
+        }
+
+        if (busTicketPrice.remainder(BigDecimal.valueOf(2)).compareTo(BigDecimal.ZERO) != 0) {
+            System.out.println("Error: The price must be an even number.");
             return false;
         }
         return true;
