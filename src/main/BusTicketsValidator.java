@@ -28,7 +28,7 @@ public class BusTicketsValidator {
                 ticketType == TicketType.WEEK ||
                 ticketType == TicketType.YEAR) &&
                 busTicket.getStartDate() <= 0) {
-            System.out.println("Error: Start date is required for ticket type" + ticketType);
+            System.out.println("Error: Start date is required for ticket type " + ticketType);
             addViolationToCounter("start date");
             return false;
         }
