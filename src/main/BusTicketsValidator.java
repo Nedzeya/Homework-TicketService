@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class BusTicketValidator {
+public class BusTicketsValidator {
 
     public void validateTickets(List<BusTicket> busTickets) {
         int validTickets = 0;
