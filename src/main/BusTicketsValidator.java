@@ -1,9 +1,7 @@
 package main;
 
 import main.enums.TicketType;
-
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +21,7 @@ public class BusTicketsValidator {
         System.out.println("Most popular violation = " + getMostPopularViolation());
     }
 
-    private boolean validateBusTicket(BusTicket busTicket) {
+    public boolean validateBusTicket(BusTicket busTicket) {
         return validateHavingStartDate(busTicket)
                 && validatePrice(busTicket)
                 && validateStartDate(busTicket)
