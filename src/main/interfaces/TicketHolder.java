@@ -2,6 +2,6 @@ package main.interfaces;
 
 import main.Ticket;
 
-public interface HasTicket {
+public interface TicketHolder {
     Ticket getTicket();
 }

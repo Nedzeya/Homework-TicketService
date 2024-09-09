@@ -2,10 +2,10 @@ package main.users;
 
 import lombok.Setter;
 import main.Ticket;
-import main.interfaces.HasTicket;
+import main.interfaces.TicketHolder;
 
 @Setter
-public class Client extends AbstractUser implements HasTicket {
+public class Client extends AbstractUser implements TicketHolder {
     private Ticket ticket;
 
     public Client(String name) {
