@@ -12,6 +12,7 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
@@ -21,10 +22,13 @@ public class BusTicketReader {
         BusTicketsValidator busTicketsValidator = new BusTicketsValidator();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
+            JSONArray jsonArray = new JSONArray(new JSONTokener(reader));
 
-                BusTicket busTicket = parseTicket(line);
+            for (int i = 0; i < jsonArray.length(); i++) {
+
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                BusTicket busTicket = parseTicket(jsonObject);
 
                 if (busTicketsValidator.validateBusTicket(busTicket)) {
                     busTickets.add(busTicket);
@@ -36,8 +40,7 @@ public class BusTicketReader {
         return busTickets;
     }
 
-    private static BusTicket parseTicket(String line) {
-        JSONObject jsonObject = new JSONObject(new JSONTokener(line));
+    private static BusTicket parseTicket(JSONObject jsonObject) {
 
         String ticketClassStr = jsonObject.optString("ticketClass", null);
         String ticketTypeStr = jsonObject.optString("ticketType", null);
