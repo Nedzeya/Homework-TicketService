@@ -1,6 +1,7 @@
 package main;
 
 import main.enums.TicketType;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -66,7 +67,7 @@ public class BusTicketsValidator {
     private boolean validateStartDate(BusTicket busTicket) {
         LocalDate currentDate = LocalDate.now();
         LocalDate startDate = busTicket.getStartDate();
-        if (startDate!= null && startDate.isAfter(currentDate)) {
+        if (startDate != null && startDate.isAfter(currentDate)) {
             System.out.println("Error: Start date cannot be in the future.");
             addViolationToCounter("start date");
             return false;
@@ -93,18 +94,25 @@ public class BusTicketsValidator {
         }
         return true;
     }
+
     /**
      * valid values are DAY,WEEK,MONTH,YEAR
      */
-    private boolean validateTicketType(BusTicket busTicket){
+    private boolean validateTicketType(BusTicket busTicket) {
+        TicketType ticketType = busTicket.getTicketType();
+        boolean isValid = false;
+
         for (TicketType type : TicketType.values()) {
-            if (type != busTicket.getTicketType()) {
-                System.out.println("Error: Invalid ticket type.");
-                addViolationToCounter("type");
-                return false;
+            if (type == ticketType) {
+                isValid = true;
+                break;
             }
         }
-        return true;
+        if (!isValid) {
+            System.out.println("Error: Invalid ticket type.");
+            addViolationToCounter("type");
+        }
+        return isValid;
     }
 
     private final Map<String, Integer> violationsCounter = new HashMap<>();
