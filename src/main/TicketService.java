@@ -76,7 +76,7 @@ public class TicketService {
                     new BusTicket(TicketClass.STD, TicketType.WEEK, 0L, BigDecimal.valueOf(15)),
                     new BusTicket(TicketClass.CLA, TicketType.YEAR, System.currentTimeMillis(), BigDecimal.ZERO),
                     new BusTicket(TicketClass.STD, TicketType.MONTH, System.currentTimeMillis(), BigDecimal.valueOf(25)),
-                    new BusTicket(TicketClass.CLA, TicketType.PRIME, 0L, BigDecimal.TEN)
+                    new BusTicket(TicketClass.CLA, TicketType.DAY, 0L, BigDecimal.TEN)
             );
             busTicketsValidator.validateTickets(busTickets);
 

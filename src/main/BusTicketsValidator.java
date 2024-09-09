@@ -23,6 +23,14 @@ public class BusTicketsValidator {
     }
 
     private boolean validateBusTicket(BusTicket busTicket) {
+        return validateHavingStartDate(busTicket)
+                && validatePrice(busTicket)
+                && validateStartDate(busTicket);
+            }
+    /**
+     * only DAY,WEEK,YEAR types must have a startDate
+     */
+    private boolean validateHavingStartDate(BusTicket busTicket) {
         TicketType ticketType = busTicket.getTicketType();
         if ((ticketType == TicketType.DAY ||
                 ticketType == TicketType.WEEK ||
@@ -32,10 +40,29 @@ public class BusTicketsValidator {
             addViolationToCounter("start date");
             return false;
         }
+        return true;
+    }
+
+    /**
+     * price can't be zero
+     */
+        private boolean validatePrice(BusTicket busTicket) {
         BigDecimal busTicketPrice = busTicket.getPrice();
         if (busTicketPrice == null || busTicketPrice.compareTo(BigDecimal.ZERO) == 0) {
             System.out.println("Error: Price can't be null or zero.");
             addViolationToCounter("price");
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * start date cannot be in the future
+     */
+    private boolean validateStartDate(BusTicket busTicket) {
+        long currentTimestamp = System.currentTimeMillis() / 1000;
+        if (busTicket.getStartDate() > currentTimestamp) {
+            System.out.println("Error: Start date cannot be in the future.");
             return false;
         }
         return true;
