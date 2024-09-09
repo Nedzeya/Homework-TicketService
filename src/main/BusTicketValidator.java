@@ -1,5 +1,7 @@
 package main;
 
+import main.enums.TicketType;
+
 import java.math.BigDecimal;
 
 public class BusTicketValidator {

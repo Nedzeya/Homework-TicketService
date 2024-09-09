@@ -1,6 +1,8 @@
 package main;
 
 import lombok.*;
+import main.enums.TicketClass;
+import main.enums.TicketType;
 
 import java.math.BigDecimal;
 

@@ -1,5 +1,6 @@
 package main;
 
+import main.enums.Sector;
 import main.users.Admin;
 import main.users.Client;
 import main.users.AbstractUser;
