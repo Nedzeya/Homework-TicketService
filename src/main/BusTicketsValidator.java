@@ -32,8 +32,9 @@ public class BusTicketsValidator {
             addViolationToCounter("start date");
             return false;
         }
-        if (busTicket.getPrice().compareTo(BigDecimal.ZERO) == 0) {
-            System.out.println("Error: Price can't be zero.");
+        BigDecimal busTicketPrice = busTicket.getPrice();
+        if (busTicketPrice == null || busTicketPrice.compareTo(BigDecimal.ZERO) == 0) {
+            System.out.println("Error: Price can't be null or zero.");
             addViolationToCounter("price");
             return false;
         }
