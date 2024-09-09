@@ -1,6 +1,6 @@
 package main.interfaces;
 
-public interface HasNumericId {
+public interface NumericId {
     void setNumericId(int id); // numeric ID
     int getNumericId();
 }
