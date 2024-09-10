@@ -37,9 +37,9 @@ public class BusTicketsValidator {
     private boolean validateHavingStartDate(BusTicket busTicket) {
         TicketType ticketType = busTicket.getTicketType();
         LocalDate startDate = busTicket.getStartDate();
-        if ((ticketType == TicketType.DAY ||
-                ticketType == TicketType.WEEK ||
-                ticketType == TicketType.YEAR) &&
+        if ((TicketType.DAY.equals(ticketType) ||
+                TicketType.WEEK.equals(ticketType) ||
+                TicketType.YEAR.equals(ticketType)) &&
                 startDate == null) {
             System.out.println("Error: Start date is required for ticket type " + ticketType);
             addViolationToCounter("start date");
