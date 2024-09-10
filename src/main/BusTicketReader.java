@@ -18,7 +18,7 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 
 public class BusTicketReader {
-    public static List<BusTicket> readTicketsFromFile(String filePath) throws IOException {
+    public static List<BusTicket> readTicketsFromFile(String filePath){
         List<BusTicket> busTickets = new ArrayList<>();
         BusTicketsValidator busTicketsValidator = new BusTicketsValidator();
 
@@ -36,6 +36,8 @@ public class BusTicketReader {
                     System.out.println("Ticket failed validation: " + busTicket);
                 }
             }
+        } catch (IOException e) {
+            System.out.println("File reading error: " + e.getMessage());
         } catch (JSONException e){
             System.out.println("JSON parsing error: " + e.getMessage());
         }

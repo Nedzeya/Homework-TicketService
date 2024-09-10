@@ -77,7 +77,7 @@ public class TicketService {
             List<BusTicket> busTickets = BusTicketReader.readTicketsFromFile(filePath);
             busTicketsValidator.validateTickets(busTickets);
 
-        } catch (IllegalArgumentException | IOException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
