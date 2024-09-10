@@ -3,6 +3,7 @@ package main;
 import main.annotations.NullableWarning;
 import main.annotations.NullableWarningChecker;
 import lombok.Getter;
+import main.enums.Sector;
 
 
 import java.math.BigDecimal;

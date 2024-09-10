@@ -1,9 +1,14 @@
 package main;
 
+import main.enums.Sector;
+import main.enums.TicketClass;
+import main.enums.TicketType;
 import main.users.Admin;
 import main.users.Client;
 import main.users.AbstractUser;
 
+import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.*;
 
 public class TicketService {
@@ -47,7 +52,7 @@ public class TicketService {
             System.out.println(ticketsByStadiumSector.size());
             //testing shared() by phone and by phone and email
             emptyTicket.shared("123-456-789");
-            fullTicket.shared("123-456-789","ticket@email.com");
+            fullTicket.shared("123-456-789", "ticket@email.com");
             //testing users polymorphism
             AbstractUser client = new Client("Nice Client");
             AbstractUser admin = new Admin("Good Admin");
@@ -64,6 +69,13 @@ public class TicketService {
                     true,
                     null,
                     5.5);
+
+            //BusTicketValidatorTesting and reading from file
+            System.out.println("Read and validate busTickets: ");
+            BusTicketsValidator busTicketsValidator = new BusTicketsValidator();
+            String filePath = "src/main/files/busTickets.json";
+            List<BusTicket> busTickets = BusTicketReader.readTicketsFromFile(filePath);
+            busTicketsValidator.validateTickets(busTickets);
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
