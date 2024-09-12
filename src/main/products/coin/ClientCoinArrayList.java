@@ -76,9 +76,10 @@ public class ClientCoinArrayList {
                 }
                 break;
             default:
-                System.out.println("Not enough coins for a gift yet.");
+                System.out.println("No such type of coins");
                 return false;
         }
+        System.out.println("Not enough coins for a bonus.");
         return false;
     }
 

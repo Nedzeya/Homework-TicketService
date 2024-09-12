@@ -1,6 +1,9 @@
 package main;
 
+import main.enums.CoinType;
 import main.enums.Sector;
+import main.products.coin.ClientCoinArrayList;
+import main.products.coin.Coin;
 import main.products.ticket.Ticket;
 import main.products.busTicket.BusTicket;
 import main.products.busTicket.BusTicketReader;
@@ -69,6 +72,21 @@ public class Main {
             List<BusTicket> busTickets = BusTicketReader.readTicketsFromFile(filePath);
             busTicketsValidator.validateTickets(busTickets);
 */
+            //ClientCoinArrayList testing
+            ClientCoinArrayList coinArrayList = new ClientCoinArrayList();
+
+            for (int i = 0; i < 10; i++) {
+                coinArrayList.putCoin(new Coin(CoinType.GOLD));
+            }
+
+            coinArrayList.exchangeCoinsForBonus(CoinType.GOLD);
+
+            for (int i = 0; i < 5; i++) {
+                coinArrayList.putCoin(new Coin(CoinType.SILVER));
+            }
+
+            coinArrayList.exchangeCoinsForBonus(CoinType.SILVER);
+
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
