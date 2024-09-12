@@ -1,9 +1,10 @@
 package main.products.ticket;
 
+import lombok.Getter;
 import main.enums.Sector;
-
 import java.util.*;
 
+@Getter
 public class TicketManager {
 
     // Store Tickets, MAX 10 Tickets in void addTickets
