@@ -14,5 +14,26 @@ public class FineHashSet {
         size = 0;
     }
 
-   
+    public void putFine(Fine fine) {
+        if (fines.contains(fine)) {
+            System.out.println("A fine with that number already exists.");
+            return;
+        }
+
+        if (size >= capacity) {
+            resize();
+        }
+
+        fines.add(fine);
+        size++;
+        System.out.println("Fine added: " + fine);
+    }
+
+    private void resize() {
+        capacity += 3;
+        Set<Fine> newSetOfFines = new HashSet<>(capacity);
+        newSetOfFines.addAll(fines);
+        fines = newSetOfFines;
+        System.out.println("Capacity increased to " + capacity);
+    }
 }
