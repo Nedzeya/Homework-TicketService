@@ -41,6 +41,7 @@ public class FineHashSet {
 
     public void deleteFine(int id) {
         fines.removeIf(fine -> fine.getId() == id);
+        size--;
         System.out.println("Fine with id:  " + id + " deleted.");
     }
 
