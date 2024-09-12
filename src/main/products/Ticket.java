@@ -1,4 +1,4 @@
-package main;
+package main.products;
 
 import main.annotations.NullableWarning;
 import main.annotations.NullableWarningChecker;

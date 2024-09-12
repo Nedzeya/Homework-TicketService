@@ -1,8 +1,8 @@
 package main.users;
 
 import lombok.Setter;
-import main.Ticket;
 import main.interfaces.TicketHolder;
+import main.products.Ticket;
 
 @Setter
 public class Client extends AbstractUser implements TicketHolder {

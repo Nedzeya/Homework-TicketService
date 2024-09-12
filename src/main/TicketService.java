@@ -1,14 +1,14 @@
 package main;
 
 import main.enums.Sector;
-import main.enums.TicketClass;
-import main.enums.TicketType;
+import main.products.Ticket;
+import main.products.busTicket.BusTicket;
+import main.products.busTicket.BusTicketReader;
+import main.products.busTicket.BusTicketsValidator;
 import main.users.Admin;
 import main.users.Client;
 import main.users.AbstractUser;
 
-import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.*;
 
 public class TicketService {

@@ -1,6 +1,6 @@
 package main.interfaces;
 
-import main.Ticket;
+import main.products.Ticket;
 
 public interface TicketChecker {
     boolean checkTicket(Ticket ticket);
