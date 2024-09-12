@@ -38,6 +38,11 @@ public class FineHashSet {
         return false;
     }
 
+    public void deleteFine(int id) {
+        fines.removeIf(fine -> fine.getId() == id);
+        System.out.println("Fine with id:  " + id + " deleted.");
+    }
+
     private void resize() {
         capacity += 3;
         Set<Fine> newSetOfFines = new HashSet<>(capacity);
