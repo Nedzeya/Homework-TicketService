@@ -4,6 +4,11 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+/**
+ * A custom collection implementation for storing Fine objects.
+ * Provides methods to put, "Contains" check, delete, and iterate over fines.
+ * Handles dynamic resizing with an increment of +3.
+ */
 public class FineHashSet {
     private Set<Fine> fines;
     private int capacity;

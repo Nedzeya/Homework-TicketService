@@ -5,8 +5,9 @@ import main.enums.CoinType;
 
 /**
  * A custom collection implementation for storing Coin objects.
- * The primary purpose of this class is to allow clients to put, get, delete coins
+ * Provides methods to put, to get, delete coins
  * and exchange coins for bonus when 10 coins of the same type are accumulated.
+ * Handles dynamic resizing with an increment of +10.
  */
 @Getter
 public class ClientCoinArrayList {
