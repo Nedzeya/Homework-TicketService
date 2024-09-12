@@ -16,32 +16,23 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            Ticket emptyTicket = new Ticket();
-            System.out.println(emptyTicket);
+            /*
+            Ticket emptyTicket = createEmptyTicket();
 
             Calendar calendar = Calendar.getInstance();
             calendar.set(2024, Calendar.AUGUST, 15, 12, 0, 0);
             calendar.set(Calendar.MILLISECOND, 0);
             long eventTime = calendar.getTimeInMillis();
 
-            Ticket fullTicket = new Ticket("ID01",
-                    "Concert",
-                    "001", eventTime,
-                    true,
-                    Sector.A,
-                    5.5);
-            System.out.println(fullTicket);
+            Ticket fullTicket = createFullTicket(eventTime);
 
             calendar.set(2024, Calendar.AUGUST, 30, 16, 2, 0);
             long eventTime1 = calendar.getTimeInMillis();
 
-            Ticket limitedTicket = new Ticket("Hall",
-                    "002",
-                    eventTime1);
-            System.out.println(limitedTicket);
+            Ticket limitedTicket = createLimitedTicket(eventTime1);
+
 // Saving ticket price
-            emptyTicket.toSaveTicketPrice(49.99);
-            emptyTicket.printTicketPrice();
+            saveTicketPrice(createEmptyTicket());
 
             TicketManager ticketManager = new TicketManager();
 //Generating tickets
@@ -77,9 +68,39 @@ public class Main {
             String filePath = "src/main/files/busTickets.json";
             List<BusTicket> busTickets = BusTicketReader.readTicketsFromFile(filePath);
             busTicketsValidator.validateTickets(busTickets);
-
+*/
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private static void saveTicketPrice(Ticket ticket) {
+        ticket.toSaveTicketPrice(49.99);
+        ticket.printTicketPrice();
+    }
+
+    private static Ticket createLimitedTicket(long eventTime1) {
+        Ticket limitedTicket = new Ticket("Hall",
+                "002",
+                eventTime1);
+        System.out.println(limitedTicket);
+        return limitedTicket;
+    }
+
+    private static Ticket createFullTicket(long eventTime) {
+        Ticket fullTicket = new Ticket("ID01",
+                "Concert",
+                "001", eventTime,
+                true,
+                Sector.A,
+                5.5);
+        System.out.println(fullTicket);
+        return fullTicket;
+    }
+
+    private static Ticket createEmptyTicket() {
+        Ticket emptyTicket = new Ticket();
+        System.out.println(emptyTicket);
+        return emptyTicket;
     }
 }
