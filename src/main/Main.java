@@ -111,13 +111,14 @@ public class Main {
         for (int i = 0; i < 10; i++) {
             coinArrayList.putCoin(new Coin(CoinType.GOLD));
         }
+        System.out.println("Getting coin: " + coinArrayList.getCoin(0));
 
         coinArrayList.exchangeCoinsForBonus(CoinType.GOLD);
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             coinArrayList.putCoin(new Coin(CoinType.SILVER));
         }
-
+        coinArrayList.deleteCoin(0);
         coinArrayList.exchangeCoinsForBonus(CoinType.SILVER);
     }
 
