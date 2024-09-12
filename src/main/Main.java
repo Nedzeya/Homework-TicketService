@@ -11,7 +11,7 @@ import main.users.AbstractUser;
 
 import java.util.*;
 
-public class TicketService {
+public class Main {
     // Store Tickets, MAX 10 Tickets in void addTickets
     private static Map<String, Ticket> tickets = new HashMap<>();
 
