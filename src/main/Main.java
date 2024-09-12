@@ -73,23 +73,27 @@ public class Main {
             busTicketsValidator.validateTickets(busTickets);
 */
             //ClientCoinArrayList testing
-            ClientCoinArrayList coinArrayList = new ClientCoinArrayList();
-
-            for (int i = 0; i < 10; i++) {
-                coinArrayList.putCoin(new Coin(CoinType.GOLD));
-            }
-
-            coinArrayList.exchangeCoinsForBonus(CoinType.GOLD);
-
-            for (int i = 0; i < 5; i++) {
-                coinArrayList.putCoin(new Coin(CoinType.SILVER));
-            }
-
-            coinArrayList.exchangeCoinsForBonus(CoinType.SILVER);
+            testExchangingCoinsForBonus();
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private static void testExchangingCoinsForBonus() {
+        ClientCoinArrayList coinArrayList = new ClientCoinArrayList();
+
+        for (int i = 0; i < 10; i++) {
+            coinArrayList.putCoin(new Coin(CoinType.GOLD));
+        }
+
+        coinArrayList.exchangeCoinsForBonus(CoinType.GOLD);
+
+        for (int i = 0; i < 5; i++) {
+            coinArrayList.putCoin(new Coin(CoinType.SILVER));
+        }
+
+        coinArrayList.exchangeCoinsForBonus(CoinType.SILVER);
     }
 
     private static void saveTicketPrice(Ticket ticket) {
