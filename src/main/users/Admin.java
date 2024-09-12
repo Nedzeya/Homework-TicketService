@@ -1,6 +1,6 @@
 package main.users;
 
-import main.products.Ticket;
+import main.products.ticket.Ticket;
 import main.interfaces.TicketChecker;
 
 public class Admin extends AbstractUser implements TicketChecker {

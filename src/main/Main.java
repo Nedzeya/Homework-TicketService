@@ -1,7 +1,7 @@
 package main;
 
 import main.enums.Sector;
-import main.products.Ticket;
+import main.products.ticket.Ticket;
 import main.products.busTicket.BusTicket;
 import main.products.busTicket.BusTicketReader;
 import main.products.busTicket.BusTicketsValidator;

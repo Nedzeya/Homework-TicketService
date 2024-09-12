@@ -1,6 +1,6 @@
 package main.interfaces;
 
-import main.products.Ticket;
+import main.products.ticket.Ticket;
 
 public interface TicketHolder {
     Ticket getTicket();

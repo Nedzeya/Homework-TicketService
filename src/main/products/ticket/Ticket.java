@@ -1,4 +1,4 @@
-package main.products;
+package main.products.ticket;
 
 import main.annotations.NullableWarning;
 import main.annotations.NullableWarningChecker;
