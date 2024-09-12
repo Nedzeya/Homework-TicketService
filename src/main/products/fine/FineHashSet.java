@@ -1,6 +1,7 @@
 package main.products.fine;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 public class FineHashSet {
@@ -41,6 +42,13 @@ public class FineHashSet {
     public void deleteFine(int id) {
         fines.removeIf(fine -> fine.getId() == id);
         System.out.println("Fine with id:  " + id + " deleted.");
+    }
+
+    public void iterateFines() {
+        Iterator<Fine> iterator = fines.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
     }
 
     private void resize() {
