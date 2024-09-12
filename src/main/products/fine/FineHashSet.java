@@ -29,6 +29,15 @@ public class FineHashSet {
         System.out.println("Fine added: " + fine);
     }
 
+    public boolean containsFine(int id) {
+        for (Fine fine : fines) {
+            if (fine.getId() == id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void resize() {
         capacity += 3;
         Set<Fine> newSetOfFines = new HashSet<>(capacity);
