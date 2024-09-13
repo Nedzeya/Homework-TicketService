@@ -1,4 +1,4 @@
-package main;
+package main.products.busTicket;
 
 import main.enums.TicketType;
 
