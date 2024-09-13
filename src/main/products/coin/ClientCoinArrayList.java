@@ -33,16 +33,12 @@ public class ClientCoinArrayList {
     }
 
     public Coin getCoin(int index) {
-        if (index >= size || index < 0) {
-            throw new IndexOutOfBoundsException();
-        }
+        checkIndexInBound(index);
         return coins[index];
     }
 
     public void deleteCoin(int index) {
-        if (index >= size || index < 0) {
-            throw new IndexOutOfBoundsException();
-        }
+        checkIndexInBound(index);
         for (int i = index; i < size - 1; i++) {
             coins[i] = coins[i + 1];
         }
@@ -82,6 +78,12 @@ public class ClientCoinArrayList {
         }
         System.out.println("Not enough coins for a bonus.");
         return false;
+    }
+
+    private void checkIndexInBound(int index) {
+        if (index >= size || index < 0) {
+            throw new IndexOutOfBoundsException();
+        }
     }
 
     private void removeCoins(CoinType coinType, int count) {
