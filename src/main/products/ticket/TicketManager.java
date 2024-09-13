@@ -31,7 +31,7 @@ public class TicketManager {
     /**
      * Generate and add ten tickets to the map tickets.
      */
-    public void generateTenTickets() {
+    public void generateTickets() {
         long eventTime;
         Random random = new Random();
         boolean isPromo;
