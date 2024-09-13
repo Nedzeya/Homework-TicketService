@@ -100,9 +100,13 @@ public class ClientCoinArrayList {
     private void countCoinsByType() {
         for (int i = 0; i < size; i++) {
             CoinType coinType = coins[i].getType();
-            if (CoinType.GOLD.equals(coinType)) goldCount++;
-            else if (CoinType.SILVER.equals(coinType)) silverCount++;
-            else if (CoinType.BRONZE.equals(coinType)) bronzeCount++;
+            if (CoinType.GOLD.equals(coinType)) {
+                goldCount++;
+            } else if (CoinType.SILVER.equals(coinType)) {
+                silverCount++;
+            } else if (CoinType.BRONZE.equals(coinType)) {
+                bronzeCount++;
+            }
         }
     }
 
